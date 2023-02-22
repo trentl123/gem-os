@@ -6,19 +6,23 @@ FileExplorer = {}
     Pointer - The current directory of the explorer
 
   Methods:
+    start (pointer) (installDir)
     setPointer (path)   - Sets the explorer's directory pointer
     getPointer  - Gets the explorer's directory pointer
     mkDir (path) (withPath)  - Make a directory
 
   ]]
-function FileExplorer:start(pointer)
+function FileExplorer:start(pointer, installDir)
   local t = setmetatable({}, { __index = FileExplorer })
-
+  t.installdir = installDir
   t.pointer = pointer
   return t
 end
 function FileExplorer:setPointer(path)
-  self.pointer = path
+  if fs.exists(path) == true then
+    self.pointer = path
+    return true
+  return false
 end
 function FileExplorer:getPointer()
   return pointer
@@ -34,6 +38,7 @@ function FileExplorer:mkDir(name, withPath)
   return false
 end
 function FileExplorer:remove(name, withPath)
+  if self.pointer+
   if withPath == false then
     fs.delete(self.pointer+name)
     return true
@@ -41,4 +46,7 @@ function FileExplorer:remove(name, withPath)
     fs.delete(name)
     return true
   end
+end
+function FileExplorer:list(dir)
+  
 end
