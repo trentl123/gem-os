@@ -12,9 +12,10 @@ function Error:new(errcode)
 end
 function Error:parseCode(errcode)
   local errorCodes = {
-    [1] = "That file/directory doesn't exist, cannot be found!",
-    [2] = "",
-    [3] = ""
+    [1] = "That file/directory doesn't exist or cannot be found.",
+    [2] = "That file/directory could not be created.",
+    [3] = "That file/directory cannot be removed."
+    [4] = "You cannot modify essential operating system files."
   }
   return errorCodes[errcode]
 end
@@ -44,7 +45,7 @@ function FileExplorer:setPointer(path)
     self.pointer = path
     return true
   end
-  return false
+    return Error:new(1)
 end
 function FileExplorer:getPointer()
   return pointer
@@ -57,7 +58,7 @@ function FileExplorer:mkDir(name, withPath)
     fs.makeDir(name)
     return true
   end
-  return false
+  return Error:new(2)
 end
 function FileExplorer:remove(name, withPath)
   if (withPath == false) then
@@ -67,10 +68,11 @@ function FileExplorer:remove(name, withPath)
     fs.delete(name)
     return true
   end
+  return Error:new(3)
 end
 function FileExplorer:list(dir)
   if (fs.exists(dir)) then
     return fs.list
   end
-  return false
+  return Error:new(1)
 end
