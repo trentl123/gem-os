@@ -1,20 +1,23 @@
-ErrorHandler = {}
+Error = {}
 --[[
-  The ErrorHandler class will handle and keep track of the operating system's errors.
-
+  The Error class will handle and keep track of the operating system's errors.
+  
+  Methods:
+    run (errcode)  - Creates a new error object.
   ]]
-function ErrorHandler:new(errcode)
-  local t = setmetable({}, { __index = ErrorHandler})
+function Error:new(errcode)
+  local t = setmetable({}, { __index = Error})
   t.code = errcode
   return t
 end
-function ErrorHandler:parseCode()
+function Error:parseCode(errcode)
   local errorCodes = {
     [1] = "That file/directory doesn't exist, cannot be found!",
     [2] = "",
     [3] = ""
   }
-
+  return errorCodes[errcode]
+end
 
 FileExplorer = {}
 --[[
@@ -24,7 +27,7 @@ FileExplorer = {}
     Pointer - The current directory of the explorer
 
   Methods:
-    start (pointer) (installDir)
+    start (pointer) (installDir)  - Creates a new FileExplorer object
     setPointer (path)   - Sets the explorer's directory pointer
     getPointer  - Gets the explorer's directory pointer
     mkDir (path) (withPath)  - Make a directory
