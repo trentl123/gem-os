@@ -3,12 +3,17 @@ ErrorHandler = {}
   The ErrorHandler class will handle and keep track of the operating system's errors.
 
   ]]
-function ErrorHandler:start(errtype, errcode)
+function ErrorHandler:new(errcode)
   local t = setmetable({}, { __index = ErrorHandler})
-  t.type = errtype
   t.code = errcode
   return t
 end
+function ErrorHandler:parseCode()
+  local errorCodes = {
+    [1] = "That file/directory doesn't exist, cannot be found!",
+    [2] = "",
+    [3] = ""
+  }
 
 
 FileExplorer = {}
@@ -25,7 +30,7 @@ FileExplorer = {}
     mkDir (path) (withPath)  - Make a directory
     remove (path)  - Removes whatever files are found at the path
   ]]
-function FileExplorer:start(pointer, installDir)
+function FileExplorer:new(pointer, installDir)
   local t = setmetatable({}, { __index = FileExplorer })
   t.installdir = installDir
   t.pointer = pointer
