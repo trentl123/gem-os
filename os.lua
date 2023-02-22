@@ -1,3 +1,10 @@
+function splitLines(str)
+  result = {}
+  for line in str:gmatch '[^\n]+' do
+    table.insert(result, line)
+  end
+  return result
+end
 Error = {}
 --[[
   The Error class will handle and keep track of the operating system's errors.
