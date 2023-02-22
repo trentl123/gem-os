@@ -32,16 +32,17 @@ function FileExplorer:start(pointer, installDir)
   return t
 end
 function FileExplorer:setPointer(path)
-  if fs.exists(path) then
+  if (fs.exists(path)) then
     self.pointer = path
     return true
+  end
   return false
 end
 function FileExplorer:getPointer()
   return pointer
 end
 function FileExplorer:mkDir(name, withPath)
-  if withPath == false then
+  if (withPath == false) then
     fs.makedir(self.pointer+name)
     return true
   else
@@ -51,8 +52,7 @@ function FileExplorer:mkDir(name, withPath)
   return false
 end
 function FileExplorer:remove(name, withPath)
-  if self.pointer+
-  if withPath == false then
+  if (withPath == false) then
     fs.delete(self.pointer+name)
     return true
   else
@@ -61,7 +61,7 @@ function FileExplorer:remove(name, withPath)
   end
 end
 function FileExplorer:list(dir)
-  if fs.exists(dir) then
+  if (fs.exists(dir)) then
     return fs.list
   end
   return false
