@@ -5,12 +5,19 @@ function splitLines(str)
   end
   return result
 end
+
+function splitPath(str)
+  result = ""
+  for eachDirectory in str:gmatch '[^/]+' do
+    result = result .. eachDirectory .. '/'
+
 Error = {}
 --[[
   The Error class will handle and keep track of the operating system's errors.
   
   Methods:
     run (errcode)  - Creates a new error object.
+    parseCode (errcode)  - Converts the code into a string error message.
   ]]
 function Error:new(errcode)
   local t = setmetable({}, { __index = Error})
@@ -59,7 +66,7 @@ function FileExplorer:getPointer()
 end
 function FileExplorer:mkDir(name, withPath)
   if (withPath == false) then
-    fs.makedir(self.pointer+name)
+    fs.makedir(self.pointer .. name)
     return true
   else
     fs.makeDir(name)
@@ -69,7 +76,7 @@ function FileExplorer:mkDir(name, withPath)
 end
 function FileExplorer:remove(name, withPath)
   if (withPath == false) then
-    fs.delete(self.pointer+name)
+    fs.delete(self.pointer .. name)
     return true
   else
     fs.delete(name)
