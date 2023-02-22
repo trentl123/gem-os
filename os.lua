@@ -24,7 +24,7 @@ function FileExplorer:getPointer()
   return pointer
 end
 function FileExplorer:mkDir(name, withPath)
-  if withPath == true then
+  if withPath == false then
     fs.makedir(self.pointer+name)
     return true
   else
@@ -32,4 +32,13 @@ function FileExplorer:mkDir(name, withPath)
     return true
   end
   return false
+end
+function FileExplorer:remove(name, withPath)
+  if withPath == false then
+    fs.delete(self.pointer+name)
+    return true
+  else
+    fs.delete(name)
+    return true
+  end
 end
