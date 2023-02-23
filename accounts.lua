@@ -1,7 +1,7 @@
 function splitBy(str, splitBy)
   local result = {}
   local regex = '[^' .. splitBy .. ']+'
-  for line in str:gmatch() do
+  for line in str:gmatch(regex) do
     table.insert(result, line)
   end
   return result
@@ -44,4 +44,5 @@ end
 function AccountHandler:setAccountPreferences(preference, newValue)
   filepath = '/gemos/data/.accounts/ .. username
   local contents = fs.open(filepath, 'r')
-  contents
+  contents = splitBy(contents, '¬sep¬')
+  for 
