@@ -7,3 +7,9 @@ startButton = button.create("Begin Installation")
 startButton.setPos(1,1)
 startButton.onClick(function() print("Installation Starting!") end)
 while true do button.await(startButton) end
+
+function initialAccountCreation()
+  io.write([[
+
+]])
+end
