@@ -1,4 +1,4 @@
-io.write("Installing dependencies\n")
+io.write("Loading...")
 shell.run("pastebin get JXJ1yCVL button.lua")
 os.loadAPI("button.lua")
 shell.run("clear")
