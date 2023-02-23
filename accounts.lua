@@ -22,7 +22,7 @@ AccountHandler = {}
     getAccountPrivileges  - 
 ]]
 function AccountHandler:createAccount(username, password, homePath, privileges, preferences)
-  if (self.instanceAlive == true) then return false end
+  if (self.instanceAlive == false) then return false end
   local t = setmetable({}, { __index = AccountHandler})
   t.instanceAlive = false
   local filepath = '/gemos/data/.accounts/' .. username
@@ -41,7 +41,7 @@ function AccountHandler:createAccount(username, password, homePath, privileges, 
   return t
 end
 function AccountHandler:translatePreferenceCode(title)
-  if (self.instanceAlive == true) then return false end
+  if (self.instanceAlive == false) then return false end
   local codes = {
     ["username"] = "usr¬",
     ["password"] = "pss¬",
@@ -53,14 +53,14 @@ function AccountHandler:translatePreferenceCode(title)
   return codes[title]
 end
 function AccountHandker:removeAccount(username)
-  if (self.instanceAlive == true) then return false end
+  if (self.instanceAlive == false) then return false end
   local filepath = '/gemos/data/.accounts/' .. username
   fs.delete(filepath())
   fs.delete('/gemos/home/' .. homePath)
   self.instanceAlive = true
 end
 function AccountHandler:setAccountPreferences(preference, newValue)
-  if (self.instanceAlive == true) then return false end
+  if (self.instanceAlive == false) then return false end
   filepath = '/gemos/data/.accounts/' .. username
   local contents = fs.open(filepath, 'r')
   contents = splitBy(contents, '¬sep¬')
@@ -74,7 +74,7 @@ function AccountHandler:setAccountPreferences(preference, newValue)
   end
 end
 function AccountHandler:getAccountPreferences(preference)
-  if (self.instanceAlive == true) then return false end
+  if (self.instanceAlive == false) then return false end
   filepath = '/gemos/data/.accounts/' .. username
   local contents = fs.open(filepath, 'r')
   contents = splitBy(contents, '¬sep¬')
@@ -86,4 +86,4 @@ function AccountHandler:getAccountPreferences(preference)
   end
 end
 function AccountHandler:loginAccount(username, password)
-  
+  if (self.instanceAlive == false) then return false end
