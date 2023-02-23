@@ -13,7 +13,7 @@ AccountHandler = {}
     getAccountPrivileges  - 
 ]]
 function AccountHandler:createAccount(username, password, homePath, privileges, preferences)
-  filepath = '/gemos/data/.accounts/' .. username
+  local filepath = '/gemos/data/.accounts/' .. username
   accountFile = io.open(filepath, 'a')
   accountFile.write(username .. "¬sep¬")
   accountFile.write(password .. "¬sep¬")
@@ -28,7 +28,11 @@ function AccountHandler:createAccount(username, password, homePath, privileges, 
   fs.makeDir('/gemos/home/' .. homePath .. '/Recycle Bin/')
 end
 function AccountHandker:removeAccount(username)
-  filepath = '/gemos/data/.accounts/' .. username
+  local filepath = '/gemos/data/.accounts/' .. username
   fs.delete(filepath())
   fs.delete('/gemos/home/' .. homePath)
 end
+function AccountHandler:setAccountPreferences(preference, newValue)
+  filepath = '/gemos/data/.accounts/ .. username
+  local contents = fs.open(filepath, 'r')
+  contents
