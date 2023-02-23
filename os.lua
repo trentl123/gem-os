@@ -39,8 +39,9 @@ function Error:parseCode(errcode)
   local errorCodes = {
     [1] = "That file/directory doesn't exist or cannot be found.",
     [2] = "That file/directory could not be created.",
-    [3] = "That file/directory cannot be removed."
-    [4] = "You cannot modify essential operating system files."
+    [3] = "That file/directory cannot be removed.",
+    [4] = "You cannot modify essential operating system files.",
+    [5] = "Your OS installation has become corrupt! Please exit to shell, load the installation disk and type '/disk/repair.lua'."
   }
   return errorCodes[errcode]
 end
@@ -60,7 +61,7 @@ FileExplorer = {}
     remove (path)  - Removes whatever files are found at the path
   ]]
 function FileExplorer:new(pointer, installDir)
-  local t = setmetatable({}, { __index = FileExplorer })
+  local t = setmetatable({}, {__index = FileExplorer})
   t.installdir = installDir
   t.pointer = pointer
   return t
@@ -112,3 +113,40 @@ function FileExplorer:getPathAbove(path)
   end
   return result
 end
+
+
+ThemeHandler = {}
+--[[
+  The ThemeHandler class is designed to handle the OS' colour codes.
+
+
+  Methods:
+    getTheme  - Get the current theme installed on the OS.
+    setTheme  - Set a new theme for the OS.
+    getColours  - Get the colours of the current theme.
+  ]]
+
+function ThemeHandler:getTheme()
+  if (fs.exists('/gemos/data/theme')) then
+    local themeFile = fs.open('/gemos/data/theme', 'r')
+    return themeFile.readAll()
+  else
+    return Error:new(5)
+  end
+end
+function ThemeHandler:setTheme(newTheme)
+  if (fs.exists('/gemos/data/theme')) then
+    local themeFile = fs.open('/gemos/data/theme', 'w')
+    themeFile.write(newTheme)
+    return true
+  else
+    return Error:new(5)
+  end
+end
+function ThemeHandler:getColours()
+  local ThemeCodes = {
+    -- [PRIMARY, SECONDARY, WARNING, INFORMATION]
+    [1] = ["red", "dark_red", "orange", "yellow"], -- Ruby Theme
+    [2] = ["light_blue", "blue", "red", "yellow"] -- Sapphire theme
+  }
+  if (ThemeHandler == )
