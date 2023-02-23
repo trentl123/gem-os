@@ -1,3 +1,12 @@
+function splitBy(str, splitBy)
+  local result = {}
+  local regex = '[^' .. splitBy .. ']+'
+  for line in str:gmatch() do
+    table.insert(result, line)
+  end
+  return result
+end
+
 AccountHandler = {}
 --[[
   The AccountHandler class is designed to handle the management of user accounts on the OS.
