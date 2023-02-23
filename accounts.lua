@@ -23,7 +23,7 @@ AccountHandler = {}
 ]]
 function AccountHandler:createAccount(username, password, homePath, privileges, preferences)
   if (self.instanceAlive == true) then return false end
-  t = setmetatable({} = {_index, AccountHandler})
+  local t = setmetable({}, { __index = AccountHandler})
   t.instanceAlive = false
   local filepath = '/gemos/data/.accounts/' .. username
   accountFile = io.open(filepath, 'a')
@@ -61,12 +61,12 @@ function AccountHandker:removeAccount(username)
 end
 function AccountHandler:setAccountPreferences(preference, newValue)
   if (self.instanceAlive == true) then return false end
-  filepath = '/gemos/data/.accounts/ .. username
+  filepath = '/gemos/data/.accounts/' .. username
   local contents = fs.open(filepath, 'r')
   contents = splitBy(contents, '¬sep¬')
   finalString = ""
   for _, eachValue in pairs(contents) do
-    if splitBy(eachValue, '¬')[0] == preference do
+    if splitBy(eachValue, '¬')[0] == preference then
       finalString = finalString .. newValue .. "¬sep¬"
     else
       finalString = finalString .. eachValue .. "¬sep¬"
@@ -75,12 +75,12 @@ function AccountHandler:setAccountPreferences(preference, newValue)
 end
 function AccountHandler:getAccountPreferences(preference)
   if (self.instanceAlive == true) then return false end
-  filepath = '/gemos/data/.accounts/ .. username
+  filepath = '/gemos/data/.accounts/' .. username
   local contents = fs.open(filepath, 'r')
   contents = splitBy(contents, '¬sep¬')
   finalString = ""
   for _, eachValue in pairs(contents) do
-    if splitBy(eachValue, '¬')[0] == preference do
+    if splitBy(eachValue, '¬')[0] == preference then
       return splitBy(eachValue, '¬')[1]
     end
   end
