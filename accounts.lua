@@ -85,3 +85,5 @@ function AccountHandler:getAccountPreferences(preference)
     end
   end
 end
+function AccountHandler:loginAccount(username, password)
+  
