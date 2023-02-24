@@ -41,7 +41,7 @@ function Error:parseCode(errcode)
     [2] = "That file/directory could not be created.",
     [3] = "That file/directory cannot be removed.",
     [4] = "You cannot modify essential operating system files.",
-    [5] = "Your OS installation has become corrupt! Please exit to shell, load the installation disk and type '/disk/repair.lua'."
+    [5] = "Your OS installation has become corrupt! Please exit to shell, load the installation disk and type '/disk/repair.lua'.",
   }
   return errorCodes[errcode]
 end
@@ -113,7 +113,39 @@ function FileExplorer:getPathAbove(path)
   end
   return result
 end
-
+function FileExplorer:copyFile(src, dst, withPath)
+  if (withPath == false) then
+    src = self.pointer .. src
+    dst = self.pointer .. dst
+  end
+  if file.exists(src) then
+    fs.copy(src, dst)
+    return true
+  end
+  return Error:new(1)
+end
+function FileExplorer:copyFile(src, dst, withPath)
+  if (withPath == false) then
+    src = self.pointer .. src
+    dst = self.pointer .. dst
+  end
+  if file.exists(src) then
+    fs.copy(src, dst)
+    return true
+  end
+  return Error:new(1)
+end
+function FileExplorer:moveFile(src, dst, withPath)
+  if (withPath == false) then
+    src = self.pointer .. src
+    dst = self.pointer .. dst
+  end
+  if file.exists(src) then
+    fs.move(src, dst)
+    return true
+  end
+  return Error:new(1)
+end
 
 ThemeHandler = {}
 --[[
@@ -149,4 +181,6 @@ function ThemeHandler:getColours()
     [1] = ["red", "dark_red", "orange", "yellow"], -- Ruby Theme
     [2] = ["light_blue", "blue", "red", "yellow"] -- Sapphire theme
   }
-  if (ThemeHandler == )
+  if (ThemeHandler:getTheme() == "ruby") then return ThemeCodes[1] end
+  if (ThemeHandler:getTheme() == "sapphire") then return ThemeCodes[2] end
+end
