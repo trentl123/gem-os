@@ -1,7 +1,6 @@
 # gem-os
-An operating system written for ComputerCraft.
+An operating system written in lua for ComputerCraft.
 
 How to install?
 ---------------
-1. Open a ComputerCraft computer (Advanced Computer recommended)
-2. Type 'pastebin get '
+The operating system cannot be installed as it is currently being developed.
