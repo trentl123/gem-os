@@ -1,14 +1,28 @@
 io.write("Loading...")
+io.write("\nDownloading version manifest..")
+sys.run("pastebin get dyBEWDFa /manifest.info")
+os.sleep(1)
+if fs.exists("/manifest.info") then
+  io.write("Manifest downloaded, validating..")
+  os.sleep(0.5)
+  io.write("\nChecking for updates..")
+  -- Compare to builtin version
+else
+  io.write("Manifest cannot be downloaded, do you have an internet connection?")
+  io.write("Update checking failed, ignoring.")
+  os.sleep(0.5)
+end
+
 shell.run("pastebin get JXJ1yCVL button.lua")
 os.loadAPI("button.lua")
 shell.run("clear")
 button.setMonitor(handler)
 startButton = button.create("Begin Installation")
 startButton.setPos(1,1)
-startButton.onClick(function() print("Installation Starting!") end)
+startButton.onClick(function() io.write("\nInstallation Starting!") end)
 while true do button.await(startButton) end
 function initialAccountCreation()
-  io.write("Commencing initial account creation..\n")
+  io.write("\nCommencing initial account creation..\n")
   os.sleep(2)
   sys.run("clear")
   io.write("Username: ")
