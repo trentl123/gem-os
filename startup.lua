@@ -17,17 +17,47 @@ function initialAccountCreation()
   local password = io.read()
   io.write("\nAlias (optional, leave blank): ")
   local alias io.read()
+  io.write("\nSelect your theme")
+  local selectedTheme = 1
+  local themeSelect = {"Ruby Theme", "Sapphire Theme"}
+  while true do
+    keyPressed = False
+    for x, _ in pairs(themeSelect) do
+      if x == selectedTheme-1 then
+        start = ">"
+      else
+        start = " "
+      end
+      io.write("\n" .. start .. themeSelect[x])
+    end
+    local event, key, isHeld = os.pullEvent("key")
+
+    if key == keys.down and selectedTheme ~>1 then
+      selectedTheme = selectedTheme + 1
+    elseif key == keys.up and selectedTheme ~< 0 then
+      selectedTheme = selectedTheme - 1
+    elseif key == keys.enter then
+      local translation = {
+        [1] = "ruby",
+        [2] = "sapphire"
+      }
+      local theme = translation[selectedTheme]
+      break
+     end
+    break
+    end
+  end
+  
   io.write("\nPreparing for account creation..")
   os.loadAPI("accounts.lua")
   os.sleep(0.6)
   io.write("\nPerforming account creation..")
-  AccountHandler:createAccount(username, password, '/gemos/home/' .. string.lower(username), 3, {["theme"] = "ruby", ["alias"] = alias})
+  AccountHandler:createAccount(username, password, '/gemos/home/' .. string.lower(username), 3, {["theme"] = theme, ["alias"] = alias})
   os.sleep(3)
   io.write("\nAccount created!")
   os.sleep(1)
-  sys.run("clear)
+  sys.run("clear")
 end
-
 io.write([[
   
                Gem OS   
