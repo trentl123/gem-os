@@ -1,3 +1,5 @@
+os.loadAPI("accounts.lua")
+os.loadAPI("colour.lua")
 function splitLines(str)
   local result = {}
   for line in str:gmatch '[^\n]+' do
