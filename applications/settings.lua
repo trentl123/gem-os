@@ -8,14 +8,17 @@
 
     Default applications are object oriented, but yours don't have to be.
   ]]
+os.loadAPI("/gemos/apis/accounts.lua")
+
 core_gemos_settings = {}
 
-function core_gemos_settings:start()
-  local t = setmetatable({}, { __index = core_gemos_settings )
+function core_gemos_settings:start(username)
+  local t = setmetatable({}, {__index = core_gemos_settings})
+  t.accTheme = AccountHandler:getAccountPreferences("theme")
   --[[
     Graphical display here (WIP)
     ]]
-  return
+  return t
 end
 function core_gemos_settings:getSettings()
   --[[
