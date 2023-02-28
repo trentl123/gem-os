@@ -33,7 +33,7 @@ Error = {}
     parseCode (errcode)  - Converts the code into a string error message.
   ]]
 function Error:new(errcode)
-  local t = setmetable({}, { __index = Error})
+  local t = setmetatable({}, { __index = Error})
   t.code = errcode
   return t
 end
