@@ -1,3 +1,6 @@
+--[[
+  formatColours() is a text translation function that returns the provided string with replaced colour codes.
+  ]]
 function formatColours(text)
   res, _ = string.gsub(text, "%&0", colors.black)
   res, _ = string.gsub(text, "%&1", colors.green)
