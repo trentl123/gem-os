@@ -1,5 +1,5 @@
-os.loadAPI("accounts.lua")
-os.loadAPI("colour.lua")
+os.loadAPI("/handlers/accounts.lua")
+os.loadAPI("/handlers/colour.lua")
 function splitLines(str)
   local result = {}
   for line in str:gmatch '[^\n]+' do
