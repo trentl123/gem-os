@@ -9,7 +9,7 @@ end
 
 AccountHandler = {}
 --[[
-  The AccountHandler class is designed to handle the management of user accounts on the OS.
+  The AccountHandler class is designed to handle the management of users' accounts on the OS.
 
   Methods:
     createAccount (username) (password) (homePath) (priviliges) (preferences)  - Create a new user account on the OS.
