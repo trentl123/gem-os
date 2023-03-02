@@ -72,6 +72,44 @@ function initialAccountCreation()
   os.sleep(1)
   sys.run("clear")
 end
+
+local selectedTheme = 1
+local verSelect = {"Terminal Only", "Graphical"}
+while true do
+  keyPressed = False
+  for x, _ in pairs(selectedVer) do
+    if x == selectedVer-1 then
+      start = ">"
+    else
+      start = " "
+    end
+    io.write("\n" .. start .. verSelect[x])
+  end
+  local event, key, isHeld = os.pullEvent("key")
+
+  if key == keys.down and selectedVer ~>1 then
+    selectedVer = selectedVer + 1
+  elseif key == keys.up and selectedVer ~< 0 then
+    selectedVer = selectedVer - 1
+  elseif key == keys.enter then
+    local translation = {
+      [1] = "terminal",
+      [2] = "graphical"
+    }
+    globalVer = translation[selectedVer]
+    break
+  end
+break
+end
+
+
+
+
+
+
+
+
+
 io.write([[
   
                Gem OS   
