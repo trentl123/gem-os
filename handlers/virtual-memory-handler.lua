@@ -12,6 +12,19 @@ function MemoryManager:append(dataId, contents, overwrite)
       fs.delete("/gemos/memory/." .. dataId)
       local toAppend = fs.open("/gemos/memory/." .. dataId, "w")
       toAppend.write(contents)
-    else return
+    end
+    else return end
+  end
   local toAppend = fs.open("/gemos/memory/." .. dataId, "w")
   toAppend.write(contents)
+end
+function MemoryManager:discard(dataId)
+  if fs.exists("/gemos/memory/." .. dataId) then
+    fs.delete("/gemos/memory/." .. dataId)
+  end
+end
+function MemoryManager:open(dataId)
+  if fs.exists("/gemos/memory/." .. dataId) then
+    return fs.open("/gemos/memory/." .. dataId):read()
+  end
+end
