@@ -104,7 +104,17 @@ function versionSelect()
   end
 end
 
+--[[
+  File Structure
+  (with /gemos/ infront)
 
+  - data
+  - home
+  - applications
+
+
+
+  ]]
 
 
 
