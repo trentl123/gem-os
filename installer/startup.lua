@@ -108,10 +108,15 @@ end
   File Structure
   (with /gemos/ infront)
 
-  - data
-  - home
-  - memory
-  - applications
+  - data   (Directory for application data)
+  - home   (Directory for user's directories)
+    |_ - <username>
+      |_ - Documents
+         - Downloads
+         - Recycle Bin
+  - memory   (Virtual memory storage)
+  - applications   (Stores application executables)
+  - logs   (Stores error logs)
 
 
 
