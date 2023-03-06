@@ -110,6 +110,7 @@ end
 
   - data
   - home
+  - memory
   - applications
 
 
