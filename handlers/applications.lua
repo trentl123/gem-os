@@ -1,5 +1,5 @@
 ApplicationHandler = {}
 
-function ApplicationHandler()
-  -- Application Handler
+function ApplicationHandler:open(path)
+  --  Run app file
 end
