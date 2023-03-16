@@ -56,6 +56,3 @@ Help
   ]])
   end
 end
-
-
-runCommand({"touch"}, "")
