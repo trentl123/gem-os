@@ -1,5 +1,7 @@
 function runCommand(arguments, flags)
-  if #arguments < 2 then return false end -- Error return here
+  local import = require('/gemos/handlers/imports.lua')
+  local e = import.import:errors()
+  if #arguments < 2 then return e:Error(6) end -- Error return here
   local username = arguments[2]
   local a = require('/gemos/handlers/accounts.lua')
   if a.AccountHandler:exists(username) then return false end -- Error return here
