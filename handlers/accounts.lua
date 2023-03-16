@@ -44,7 +44,7 @@ function AccountHandler:translatePreferenceCode(title)
   }
   return codes[title]
 end
-function AccountHandker:removeAccount(username)
+function AccountHandler:removeAccount(username)
   local filepath = '/gemos/data/.accounts/' .. username
   fs.delete(filepath())
   fs.delete('/gemos/home/' .. homePath)
@@ -78,4 +78,7 @@ function AccountHandler:loginAccount(username, password)
   if fs.exists(filepath) == false then return false end
   if AccountHandler:getAccountPreferences("pss") == password then return true end
   return false
+end
+function AccountHandler:exists(username)
+  return fs.exists('/gemos/home/'..username)
 end
