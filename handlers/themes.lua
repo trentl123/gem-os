@@ -30,8 +30,8 @@ end
 function ThemeHandler:getColours()
   local ThemeCodes = {
     -- [PRIMARY, SECONDARY, WARNING, INFORMATION]
-    [1] = ["red", "dark_red", "orange", "yellow"], -- Ruby Theme
-    [2] = ["light_blue", "blue", "red", "yellow"] -- Sapphire theme
+    [1] = {"red", "dark_red", "orange", "yellow"}, -- Ruby Theme
+    [2] = {"light_blue", "blue", "red", "yellow"} -- Sapphire theme
   }
   if (ThemeHandler:getTheme() == "ruby") then return ThemeCodes[1] end
   if (ThemeHandler:getTheme() == "sapphire") then return ThemeCodes[2] end
