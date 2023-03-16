@@ -23,12 +23,14 @@ function runCommand(arguments, flags)
     }
   if #arguments == 1 then
     io.write("\n" .. arguments[1] .. "\n")
-    io.write("-"*#arguments)
-    io.write([[
+    for y=1,#arguments[1] do io.write("-") end
+    io.write([[ 
+    
 Arguments
 ---------]])
-    for x, _, in pairs(argumentDictionary[arguments[1]]) do
+    for _, x in pairs(argumentDictionary[arguments[1]]) do
       io.write("\n" .. x)
+    end
     io.write([[
 Description
 -----------
@@ -52,4 +54,8 @@ Help
 - gpm <install/remove/run>
     
   ]])
+  end
 end
+
+
+runCommand({"touch"}, "")
