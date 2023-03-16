@@ -1,25 +1,25 @@
 import = {}
 function import:accounts()
-  os.loadAPI("handlers/accounts.lua")
+  return require("handlers/accounts.lua")
 end
 function import:applications()
-  os.loadAPI("handlers/applications.lua")
+  return require("handlers/applications.lua")
 end
 function import:colour()
-  os.loadAPI("handlers/colour.lua")
+  return require("handlers/colour.lua")
 end
 function import:errors()
-  os.loadAPI("handlers/errors.lua")
+  return require("handlers/errors.lua")
 end
 function import:fileexplorer()
-  os.loadAPI("handlers/fileexplorer.lua")
+  return require("handlers/fileexplorer.lua")
 end
 function import:notifications()
-  os.loadAPI("handlers/notifications.lua")
+  return require("handlers/notifications.lua")
 end
 function import:themes()
-  os.loadAPI("handlers/themes.lua")
+  return require("handlers/themes.lua")
 end
 function import:memory()
-  os.loadAPI("handlers/memory.lua")
+  return require("handlers/memory.lua")
 end
