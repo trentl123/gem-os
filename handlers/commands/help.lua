@@ -8,7 +8,7 @@ function runCommand(arguments, flags)
     ['mkdir'] = 'mkdir is used to create a new directory.',
     ['touch'] = "touch creates a new file. It will create provided directories if they don't exist.",
     ['sudo'] = 'sudo executes commands with artificially elevated privileges.',
-    ['update'] = 'update checks for and updates the current os versio.n',
+    ['update'] = 'update checks for and updates the current os version.',
     ['gpm'] = "gpm (gemos package manager) is the OS' package manager." 
     }
   local argumentDictionary = {
