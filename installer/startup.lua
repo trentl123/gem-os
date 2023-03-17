@@ -117,6 +117,8 @@ end
   - memory   (Virtual memory storage)
   - applications   (Stores application executables)
   - logs   (Stores error logs)
+  - sys   (Stores system files)
+    |_ - handlers
 
 
 
