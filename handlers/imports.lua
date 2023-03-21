@@ -1,25 +1,25 @@
-import = {}
-function import:accounts()
-  return require("/gemos/sys/handlers/accounts.lua")
+Import = {}
+function Import:accounts()
+  return require("/gemos/sys/handlers/accounts")
 end
-function import:applications()
-  return require("/gemos/sys/handlers/applications.lua")
+function Import:applications()
+  return require("/gemos/sys/handlers/applications")
 end
-function import:colour()
-  return require("/gemos/sys/handlers/colour.lua")
+function Import:colour()
+  return require("/gemos/sys/handlers/colour")
 end
-function import:errors()
-  return require("/gemos/sys/handlers/errors.lua")
+function Import:errors()
+  return require("/gemos/sys/handlers/errors")
 end
-function import:fileexplorer()
-  return require("/gemos/sys/handlers/fileexplorer.lua")
+function Import:fileexplorer()
+  return require("/gemos/sys/handlers/fileexplorer")
 end
-function import:notifications()
-  return require("/gemos/sys/handlers/notifications.lua")
+function Import:notifications()
+  return require("/gemos/sys/handlers/notifications")
 end
-function import:themes()
-  return require("/gemos/sys/handlers/themes.lua")
+function Import:themes()
+  return require("/gemos/sys/handlers/themes")
 end
-function import:memory()
-  return require("/gemos/sys/handlers/memory.lua")
+function Import:memory()
+  return require("/gemos/sys/handlers/memory")
 end
