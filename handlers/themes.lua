@@ -1,4 +1,5 @@
-os.loadAPI("/handlers/errors.lua")
+require('/gemos/sys/imports')
+Import:errors()
 ThemeHandler = {}
 --[[
   The ThemeHandler class is designed to handle the OS' colour codes.
