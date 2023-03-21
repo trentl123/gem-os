@@ -1,3 +1,5 @@
+require('/gemos/sys/imports')
+Import:errors()
 function splitLines(str)
   local result = {}
   for line in str:gmatch '[^\n]+' do
