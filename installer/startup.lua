@@ -1,9 +1,12 @@
-io.write("Loading...")
+io.write("Installing account handler..")
+io.write("\nINSTALL HERE") -- Account Handler install from pastebin
+require('/.gemostemp/accounts')
+io.write("\nLoading...")
 io.write("\nDownloading version manifest..")
-sys.run("pastebin get dyBEWDFa /manifest.info")
+sys.run("pastebin get dyBEWDFa /.gemostemp/manifest.info")
 os.sleep(1)
 if fs.exists("/manifest.info") then
-  io.write("Manifest downloaded, validating..")
+  io.write("\nManifest downloaded, validating..")
   os.sleep(0.5)
   io.write("\nChecking for updates..")
   -- Compare to builtin version
@@ -63,7 +66,6 @@ function initialAccountCreation()
   end
   
   io.write("\nPreparing for account creation..")
-  os.loadAPI("accounts.lua")
   os.sleep(0.6)
   io.write("\nPerforming account creation..")
   AccountHandler:createAccount(username, password, '/gemos/home/' .. string.lower(username), 3, {["theme"] = theme, ["alias"] = alias})
@@ -136,3 +138,4 @@ io.write([[
           ready for you....
   
 ]])
+os.delete('/.gemostemp/')
