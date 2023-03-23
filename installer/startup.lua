@@ -1,9 +1,9 @@
 io.write("Installing account handler..")
-io.write("\nINSTALL HERE") -- Account Handler install from pastebin
+shell.run("pastebin get KiZeBQ7R /.gemostemp/accounts.lua")
 require('/.gemostemp/accounts')
 io.write("\nLoading...")
 io.write("\nDownloading version manifest..")
-sys.run("pastebin get dyBEWDFa /.gemostemp/manifest.info")
+shell.run("pastebin get dyBEWDFa /.gemostemp/manifest.info")
 os.sleep(1)
 if fs.exists("/manifest.info") then
   io.write("\nManifest downloaded, validating..")
@@ -15,12 +15,11 @@ else
   io.write("Update checking failed, ignoring.")
   os.sleep(0.5)
 end
-
-shell.run("pastebin get JXJ1yCVL button.lua")
-os.loadAPI("button.lua")
+shell.run("pastebin get JXJ1yCVL /.gemostemp/buttons.lua")
+local btn = require("/.gemostemp/buttons")
 shell.run("clear")
-button.setMonitor(handler)
-startButton = button.create("Begin Installation")
+btn.button.setMonitor(handler)
+startButton = btn.button.create("Begin Installation")
 startButton.setPos(1,1)
 startButton.onClick(function() io.write("\nInstallation Starting!") end)
 while true do button.await(startButton) end
