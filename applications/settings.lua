@@ -32,3 +32,13 @@ function core_gemos_settings:setSettings(setting, newValue)
     ]]
   return
 end
+function core_gemos_settings:_getSettingData(setting)
+    if (setting == "theme") {
+      local data = {
+        ["path"] = "",
+        ["current"] = "",
+
+      }
+    }
+  return
+end
